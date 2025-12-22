@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://6albguo1jty"]
+[gd_scene load_steps=10 format=3 uid="uid://6albguo1jty"]
 
 [ext_resource type="Texture2D" uid="uid://be0x4u4a46fyb" path="res://assets/characters.png" id="1_4dvvg"]
+[ext_resource type="Script" uid="uid://dw8nsjjcdisxf" path="res://scripts/enemy.gd" id="1_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://jpen5qud0dml" path="res://scenes/killzone.tscn" id="2_rnjyy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vge2"]
@@ -42,8 +43,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m5ht"]
 size = Vector2(14, 14)
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="CharacterBody2D"]
 position = Vector2(0, -16)
+script = ExtResource("1_4ra3w")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
