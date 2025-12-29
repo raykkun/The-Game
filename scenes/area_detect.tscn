@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cq00umbb023v8"]
+
+[node name="Area Detect" type="Area2D"]
+collision_mask = 2
