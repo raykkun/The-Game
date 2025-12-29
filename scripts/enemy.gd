@@ -11,9 +11,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	move_and_slide()
+	
+
+
+func _on_area_detect_body_entered(body: Node2D) -> void:
 	if player != null:
 		var direction = global_position.direction_to(player.global_position)
-		print(direction)
+		#print(direction)
 		#if direction > 0:
 			#snake_sprite.flip_h = false
 		#elif direction < 0:
@@ -21,6 +26,4 @@ func _physics_process(delta: float) -> void:
 			
 		velocity.x = direction.x * speed 
 		velocity.y = 0
-		move_and_slide()
-	
 	
