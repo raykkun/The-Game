@@ -223,7 +223,7 @@ position = Vector2(25, 138)
 shape = SubResource("WorldBoundaryShape2D_iywne")
 
 [node name="Enemy" parent="." instance=ExtResource("3_iywne")]
-position = Vector2(86, 64)
+position = Vector2(86, 80)
 
 [node name="Platform" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(188, 119)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6albguo1jty"]
+[gd_scene load_steps=9 format=3 uid="uid://6albguo1jty"]
 
 [ext_resource type="Texture2D" uid="uid://be0x4u4a46fyb" path="res://assets/characters.png" id="1_4dvvg"]
 [ext_resource type="Script" uid="uid://dw8nsjjcdisxf" path="res://scripts/enemy.gd" id="1_4ra3w"]
@@ -40,25 +40,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3m5ht"]
-size = Vector2(14, 14)
-
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(0, -16)
 script = ExtResource("1_4ra3w")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hh0fu")
 autoplay = "default"
 
-[node name="Killzone" parent="." instance=ExtResource("2_rnjyy")]
-position = Vector2(0, 6)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -10)
+polygon = PackedVector2Array(6, -4, 8, -2, 8, 0, 7, 0, 6, 4, 5, 8, 3, 10, -8, 10, -7, 8, -7, 3, -6, 2, -3, 2, -3, -2, -1, -4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-visible = false
-position = Vector2(0, 3)
-shape = SubResource("RectangleShape2D_3m5ht")
+[node name="Killzone" parent="." instance=ExtResource("2_rnjyy")]
+position = Vector2(0, -10)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Killzone"]
 polygon = PackedVector2Array(6, -4, 8, -2, 8, 0, 7, 0, 6, 4, 5, 8, 3, 10, -8, 10, -7, 8, -7, 3, -6, 2, -3, 2, -3, -2, -1, -4)
