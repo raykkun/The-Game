@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://8448o5p3xu46"]
+[gd_scene load_steps=12 format=4 uid="uid://8448o5p3xu46"]
 
 [ext_resource type="PackedScene" uid="uid://dbbi4qwe2t2ee" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://h0ci508yi3o0" path="res://assets/sheet.png" id="2_yqjtg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0bv1vhjdsdtc" path="res://scenes/coin.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://jpen5qud0dml" path="res://scenes/killzone.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dxau78647u5pu" path="res://scenes/platform.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cq00umbb023v8" path="res://scenes/area_detect.tscn" id="6_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -179,6 +180,9 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(110, 20)
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -222,8 +226,18 @@ position = Vector2(25, 138)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_iywne")
 
-[node name="Enemy" parent="." instance=ExtResource("3_iywne")]
-position = Vector2(86, 80)
-
 [node name="Platform" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(188, 119)
+
+[node name="Enemy" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemy" instance=ExtResource("3_iywne")]
+position = Vector2(49, 80)
+
+[node name="Area Detect" parent="Enemy" instance=ExtResource("6_u5sy4")]
+position = Vector2(49, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area Detect"]
+shape = SubResource("RectangleShape2D_gee14")
+
+[connection signal="body_entered" from="Enemy/Area Detect" to="Enemy/Enemy" method="_on_area_detect_body_entered"]
