@@ -181,7 +181,7 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
-size = Vector2(110, 20)
+size = Vector2(108, 20)
 
 [node name="Game" type="Node2D"]
 
@@ -206,7 +206,7 @@ tile_map_data = PackedByteArray("AAAAAAMAAAAOAAEAAAD//wMAAAAPAAIAAAD+/wMAAAAOAAI
 tile_set = SubResource("TileSet_lbhrr")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-35, 64)
+position = Vector2(-45, 63)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(22, -11)
@@ -237,7 +237,9 @@ position = Vector2(49, 80)
 [node name="Area Detect" parent="Enemy" instance=ExtResource("6_u5sy4")]
 position = Vector2(49, 70)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area Detect"]
+[node name="Area Shape" type="CollisionShape2D" parent="Enemy/Area Detect"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_gee14")
 
 [connection signal="body_entered" from="Enemy/Area Detect" to="Enemy/Enemy" method="_on_area_detect_body_entered"]
+[connection signal="body_exited" from="Enemy/Area Detect" to="Enemy/Enemy" method="_on_area_detect_body_exited"]
